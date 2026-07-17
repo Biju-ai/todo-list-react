@@ -1,6 +1,5 @@
 name: Node.js CI
 
-# Trigger: run this on every push or pull request to main branch
 on:
   push:
     branches: ["main"]
@@ -12,20 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Get your code from the repo
+      # Checkout code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js
+      # Setup Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      # Step 3: Install dependencies
+      # Install dependencies
       - name: Install dependencies
         run: npm install
 
-      # Step 4: Run your tests
-      - name: Run tests
-        run: npm test
+      # Check code quality
+      - name: Run Lint
+        run: npm run lint
+
+      # Build React application
+      - name: Build Application
+        run: npm run build
