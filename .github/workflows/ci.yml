@@ -30,3 +30,7 @@ jobs:
       # Build React application
       - name: Build Application
         run: npm run build
+
+      # 6. Clean old local artifacts so merge step only uses this run's output
+      - name: 🧹 Clean Cypress artifacts
+        run: npm run clean:artifacts
