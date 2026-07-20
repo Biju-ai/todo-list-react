@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "clean:artifacts": "node -e \"const fs=require('fs');['cypress/reports/mochawesome','cypress/reports/mochawesome-report','cypress/screenshots','cypress/videos','mochawesome.json'].forEach(p=>fs.rmSync(p,{recursive:true,force:true}));fs.mkdirSync('cypress/reports/mochawesome',{recursive:true});\""
   },
   "dependencies": {
     "react": "^19.1.0",
